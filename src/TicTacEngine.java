@@ -50,12 +50,42 @@ public class TicTacEngine implements ActionListener {
 		} else if (winner.equals("O")) {
 			parent.score.setText("You lost!");
 		} else if (winner.equals("T")) {
-			parent.score.setText("It's a tie");
+			parent.score.setText("It's a tie!");
 		}
 	}
 	
 	public String lookWinner() {
-		return "";
+		String theWinner = "";
+		parent.emptySquresLeft--;
+		
+		if (parent.emptySquresLeft == 0) {
+			return "T";
+		}
+		// check first row - elements 0,1,2
+		if (!parent.squares[0].getText().equals("") && 
+				parent.squares[0].getText().equals(parent.squares[1].getText()) &&
+				parent.squares[0].getText().equals(parent.squares[2].getText())) {
+			theWinner = parent.squares[0].getText();
+			highlightWinner(0,1,2);
+		// check second row - elements 3,4,5
+		} else if (!parent.squares[3].getText().equals("") &&
+				parent.squares[3].getText().equals(parent.squares[4].getText()) &&
+				parent.squares[3].getText().equals(parent.squares[5].getText())) {
+			theWinner = parent.squares[3].getText();
+			highlightWinner(3,4,5);
+		// check three row - elements 6,7,8
+		} else if (!parent.squares[6].getText().equals("") &&
+				parent.squares[6].getText().equals(parent.squares[7].getText()) &&
+				parent.squares[6].getText().equals(parent.squares[8].getText())) {
+			theWinner = parent.squares[6].getText();
+			highlightWinner(6,7,8);
+		}
+		
+		return theWinner;
+	}
+	
+	public void highlightWinner(int a, int b, int c) {
+		
 	}
 	
 	public void endTheGame() {
