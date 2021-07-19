@@ -62,23 +62,34 @@ public class TicTacEngine implements ActionListener {
 			return "T";
 		}
 		// check first row - elements 0,1,2
-		if (!parent.squares[0].getText().equals("") && 
-				parent.squares[0].getText().equals(parent.squares[1].getText()) &&
-				parent.squares[0].getText().equals(parent.squares[2].getText())) {
-			theWinner = parent.squares[0].getText();
+		if (checkCombination(0,1,2)) {
+			theWinner = getText(0);
 			highlightWinner(0,1,2);
 		// check second row - elements 3,4,5
-		} else if (!parent.squares[3].getText().equals("") &&
-				parent.squares[3].getText().equals(parent.squares[4].getText()) &&
-				parent.squares[3].getText().equals(parent.squares[5].getText())) {
-			theWinner = parent.squares[3].getText();
+		} else if (checkCombination(3,4,5)) {
+			theWinner = getText(3);
 			highlightWinner(3,4,5);
 		// check three row - elements 6,7,8
-		} else if (!parent.squares[6].getText().equals("") &&
-				parent.squares[6].getText().equals(parent.squares[7].getText()) &&
-				parent.squares[6].getText().equals(parent.squares[8].getText())) {
-			theWinner = parent.squares[6].getText();
+		} else if (checkCombination(6,7,8)) {
+			theWinner = getText(6);
 			highlightWinner(6,7,8);
+		// check first column 0,3,6 
+		} else if (checkCombination(0,3,6)) {
+			theWinner = getText(0);
+			highlightWinner(0,3,6);
+		//check second column 1,4,7
+		} else if (checkCombination(1,4,7)) {
+			theWinner = getText(1);
+			highlightWinner(1,4,7);
+		} else if (checkCombination(2,5,8)) {
+			theWinner = getText(2);
+			highlightWinner(2,5,8);
+		} else if (checkCombination(0,4,8)) {
+			theWinner = getText(0);
+			highlightWinner(0,4,8);
+		} else if (checkCombination(2,4,6)) {
+			theWinner = getText(2);
+			highlightWinner(0,4,8);
 		}
 		
 		return theWinner;
@@ -94,6 +105,15 @@ public class TicTacEngine implements ActionListener {
 	
 	public void computerMove() {
 	
+	}
+	protected boolean checkCombination (int a, int b, int c) {
+		if (!getText(a).equals("") && getText(a).equals(getText(b)) && getText(a).equals(getText(c)))
+			return true;
+		
+		return false;
+	}
+	public String getText(int index) {
+		return parent.squares[index].getText();
 	}
 
 }
