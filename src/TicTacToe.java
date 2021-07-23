@@ -1,9 +1,11 @@
 import javax.swing.JButton;
+
 import javax.swing.JLabel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 
 public class TicTacToe {
@@ -13,6 +15,7 @@ public class TicTacToe {
 	int y = 3;
 	int sizePlayingField = x * y;
 	
+	Font font = new Font(Font.SERIF, Font.PLAIN, 31);
 	JPanel windowContent;
 	JPanel gamePane;
 	JButton newGameButton;
@@ -45,6 +48,8 @@ public class TicTacToe {
 		
 		for(int i = 0; i < sizePlayingField; i++) {
 			squares[i] = new JButton();
+			squares[i].setFocusable(false);
+			squares[i].setFont(font);
 			squares[i].addActionListener(ticTacEngine);
 			gamePane.add(squares[i]);
 		}
