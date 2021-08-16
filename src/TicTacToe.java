@@ -48,6 +48,7 @@ public class TicTacToe {
 		
 		for(int i = 0; i < sizePlayingField; i++) {
 			squares[i] = new JButton();
+			squares[i].setEnabled(false);
 			squares[i].setFocusable(false);
 			squares[i].setFont(font);
 			squares[i].addActionListener(ticTacEngine);
